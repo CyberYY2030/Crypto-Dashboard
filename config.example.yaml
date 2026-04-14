@@ -1,0 +1,35 @@
+timezone: "Asia/Shanghai"
+db_path: "crypto_dashboard.db"
+
+alert:
+  btc_daily_move_threshold: 7.0
+
+telegram:
+  # Do not put TELEGRAM_BOT_TOKEN here. Use environment variable instead.
+  # chat_id can be filled here, or set via TELEGRAM_CHAT_ID.
+  chat_id: ""
+
+modules:
+  coingecko: true
+  defillama: true
+  feargreed: true
+  binance_oi: true
+
+symbols:
+  coingecko:
+    btc_id: "bitcoin"
+    eth_id: "ethereum"
+  binance:
+    btc_symbol: "BTCUSDT"
+    eth_symbol: "ETHUSDT"
+  binance_spot:
+    btc_symbol: "BTCUSDT"
+    eth_symbol: "ETHUSDT"
+
+display:
+  fiat: "usd"
+  history_days: 120
+
+sosovalue:
+  # Optional. Prefer env var SOSO_API_KEY for public/shared environments.
+  api_key: ""

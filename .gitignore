@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+
+config.yaml
+crypto_dashboard.db
+*.db
+*.sqlite
+*.sqlite3
+
+logs/
+.streamlit/
