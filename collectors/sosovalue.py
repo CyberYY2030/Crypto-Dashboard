@@ -26,7 +26,7 @@ def current_etf_data_metrics(etf_type: str, api_key: str) -> Dict[str, Any]:
     """
     url = f"{BASE}/openapi/v2/etf/currentEtfDataMetrics"
     headers = {"x-soso-api-key": api_key, "Content-Type": "application/json"}
-    r = requests.post(url, headers=headers, json={"type": etf_type}, timeout=25, verify=_verify_param())
+    r = requests.post(url, headers=headers, json={"type": etf_type}, timeout=25, verify=False)
     r.raise_for_status()
     return r.json()
 
@@ -38,7 +38,7 @@ def historical_inflow_chart(etf_type: str, api_key: str) -> List[Dict[str, Any]]
     try:
         url = f"{BASE}/openapi/v2/etf/historicalInflowChart"
         headers = {"x-soso-api-key": api_key, "Content-Type": "application/json"}
-        r = requests.post(url, headers=headers, json={"type": etf_type}, timeout=25, verify=_verify_param())
+        r = requests.post(url, headers=headers, json={"type": etf_type}, timeout=25, verify=False)
         r.raise_for_status()
         j = r.json()
         if j and j.get("code") == 0:
@@ -49,7 +49,6 @@ def historical_inflow_chart(etf_type: str, api_key: str) -> List[Dict[str, Any]]
             # 结构2：data 是 dict，list 在 data["list"]
             if isinstance(data, dict):
                 return data.get("list") or []
-        ...
     except requests.exceptions.RequestException:
         return []
     return []

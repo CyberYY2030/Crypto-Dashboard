@@ -1,12 +1,37 @@
 timezone: "Asia/Shanghai"
 db_path: "crypto_dashboard.db"
 
+alpha:
+  enabled: true
+  quote_currency: "usd"
+  market_cap_limit_usd: 100000000
+  drawdown_threshold_pct: 90.0
+  volume_baseline_days: 7
+  volume_min_usd: 5000000
+  volume_expansion_ratio_min: 1.5
+  breakout_lookback_days: 7
+  compression_lookback_days: 7
+  compression_score_min: 0.6
+  stable_quote_symbols: ["USDC", "USDT", "DAI", "USDE"]
+  refresh_minutes: 30
+  stale_run_minutes: 60
+  universe_refresh_hours: 24
+  reference_refresh_batch_size: 20
+  reference_request_interval_seconds: 15.1  # local live conservative baseline; GeckoTerminal's official limit is unchanged
+  reference_refresh_hours: 24
+  reference_max_age_hours: 36
+  reference_failure_retry_hours: 6
+  min_current_pool_ratio: 0.8
+  min_ready_ratio: 0.8
+  holder_refresh_hours: 6
+  moralis_api_key: ""
+
 alert:
-  btc_daily_move_threshold: 7.0
+  btc_daily_move_threshold: 7.0  # percent
 
 telegram:
-  # Do not put TELEGRAM_BOT_TOKEN here. Use environment variable instead.
-  # chat_id can be filled here, or set via TELEGRAM_CHAT_ID.
+  # DO NOT put token here. Use env var TELEGRAM_BOT_TOKEN.
+  # chat_id can be here or via env var TELEGRAM_CHAT_ID
   chat_id: ""
 
 modules:
@@ -31,5 +56,4 @@ display:
   history_days: 120
 
 sosovalue:
-  # Optional. Prefer env var SOSO_API_KEY for public/shared environments.
   api_key: ""

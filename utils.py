@@ -98,3 +98,16 @@ def rolling_percentile(series, window: int = 365):
     tail = s.iloc[-window:] if len(s) >= window else s
     last = tail.iloc[-1]
     return float((tail.rank(pct=True).iloc[-1]) * 100.0)
+
+
+def fmt_compact_number(x: Optional[float]) -> str:
+    if x is None:
+        return "N/A"
+    absx = abs(x)
+    if absx >= 1e9:
+        return f"{x/1e9:,.2f}B"
+    if absx >= 1e6:
+        return f"{x/1e6:,.2f}M"
+    if absx >= 1e3:
+        return f"{x/1e3:,.1f}K"
+    return f"{x:,.2f}"

@@ -13,3 +13,6 @@ crypto_dashboard.db
 
 logs/
 .streamlit/
+output/
+csv_out/
+.playwright-cli/
